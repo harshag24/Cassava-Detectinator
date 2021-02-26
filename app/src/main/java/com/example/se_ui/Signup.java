@@ -43,55 +43,50 @@ public class Signup extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        signup2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                emailInput = email.getText().toString().trim();
-                passwordInput = pass.getText().toString().trim();
-                nameInput = name.getText().toString().trim();
-                phoneInput=phone.getText().toString().trim();
-                if (validateName() && validatePassword() && validateEmail() && validatePhone()) {
-                    progressDialog.setMessage("Signing Up...");
-                    progressDialog.show();
-                    createAccount(emailInput, passwordInput);
-                }
+        signup2.setOnClickListener(v -> {
+            emailInput = email.getText().toString().trim();
+            passwordInput = pass.getText().toString().trim();
+            nameInput = name.getText().toString().trim();
+            phoneInput=phone.getText().toString().trim();
+            if (validateName() && validatePassword() && validateEmail() && validatePhone()) {
+                progressDialog.setMessage("Signing Up...");
+                progressDialog.show();
+                createAccount(emailInput, passwordInput);
             }
         });
     }
 
     public void createAccount(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                .addOnCompleteListener(this, task -> {
 
-                        if (task.isSuccessful()) {
-                            Log.i(TAG, "createUserWithEmail:success ");
-//                            saveUserInfo();
-                            Toast.makeText(Signup.this, "Successfully Registered", Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
+                    if (task.isSuccessful()) {
+                        Log.i(TAG, "createUserWithEmail:success ");
+                            saveUserInfo();
                             openhomepage();
-                        }
-                        else {
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            progressDialog.dismiss();
-                            Toast.makeText(Signup.this, "Registration failed.",
-                                    Toast.LENGTH_LONG).show();
-                        }
+                    }
+                    else {
+                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                        progressDialog.dismiss();
+                        Toast.makeText(Signup.this, "Registration failed.",
+                                Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
-//    public void saveUserInfo()
-//    {
-//        databaseReference= FirebaseDatabase.getInstance().getReference("Users");
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        HashMap<String, Object> add_user = new HashMap<>();
-//        add_user.put("name" , nameInput );
-//        add_user.put("phone_no" , phoneInput);
-//        add_user.put("email" , "false");
-//        databaseReference.child(user.getUid()).updateChildren(add_user);
-//    }
+    public void saveUserInfo()
+    {
+        databaseReference= FirebaseDatabase.getInstance().getReference("Users");
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        Log.w(TAG, String.valueOf(user));
+        HashMap<String, Object> add_user = new HashMap<>();
+        add_user.put("name" , nameInput );
+        add_user.put("phone_no" , phoneInput);
+        databaseReference.child(user.getUid()).updateChildren(add_user);
+
+        Toast.makeText(Signup.this, "Successfully Registered", Toast.LENGTH_LONG).show();
+        progressDialog.dismiss();
+    }
 
     public void openhomepage() {
         final Intent intent = new Intent(Signup.this, HomePage.class);

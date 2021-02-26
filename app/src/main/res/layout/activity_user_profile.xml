@@ -7,20 +7,20 @@ android:layout_height="match_parent"
 tools:context=".UserProfile">
 
 
-
-<TextView
-    android:id="@+id/profile_header"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="144dp"
-    android:layout_marginTop="32dp"
-    android:text="Profile"
-    android:textColor="@android:color/black"
-    android:textSize="40sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/profile_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="32dp"
+        android:text="Profile"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/profile_email_field"
@@ -55,13 +55,13 @@ tools:context=".UserProfile">
         android:layout_height="53dp"
         android:layout_marginStart="165dp"
         android:layout_marginEnd="158dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="92dp"
         android:text="Submit"
         android:textColor="#FFFFFF"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -70,14 +70,14 @@ tools:context=".UserProfile">
         android:layout_height="wrap_content"
         android:layout_marginStart="155dp"
         android:layout_marginEnd="198dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="65dp"
         android:text="Reset Password ?"
         android:textColor="@android:color/black"
         android:textSize="15sp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/submit_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -136,7 +136,7 @@ tools:context=".UserProfile">
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/edit_button"
         android:layout_width="51dp"
         android:layout_height="54dp"
         android:layout_marginTop="84dp"
