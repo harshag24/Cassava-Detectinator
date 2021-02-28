@@ -30,20 +30,17 @@ public class SplashScreen extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        int SPLASH_TIME_OUT = 500;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (firebaseUser != null) {
-//                    music=MediaPlayer.create(SplashScreen.this,R.raw.guitar_loud);
+        int SPLASH_TIME_OUT = 800;
+        new Handler().postDelayed(() -> {
+            if (firebaseUser != null) {
+//                    music=MediaPlayer.create(SplashScreen.this,R.raw.detectinaotr);
 //                    music.start();
-                    getUserName();
-                } else {
-                    Intent intent = new Intent(SplashScreen.this, Login.class);
+                getUserName();
+            } else {
+                Intent intent = new Intent(SplashScreen.this, Login.class);
 //                    music.release();
-                    finish();
-                    startActivity(intent);
-                }
+                finish();
+                startActivity(intent);
             }
         }, SPLASH_TIME_OUT);
     }
