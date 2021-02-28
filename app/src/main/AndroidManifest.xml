@@ -13,19 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SE_UI">
-        <activity android:name=".Analytics"></activity>
-        <activity android:name=".Prev_pred" />
-        <activity android:name=".UserProfile" />
-        <activity android:name=".Result" />
-        <activity android:name=".Signup" />
-        <activity android:name=".HomePage" />
-        <activity android:name=".Login">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Analytics" />
+        <activity android:name=".Prev_pred" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".Result" />
+        <activity android:name=".Signup" />
+        <activity android:name=".HomePage" />
+        <activity android:name=".Login"/>
     </application>
 
 </manifest>
