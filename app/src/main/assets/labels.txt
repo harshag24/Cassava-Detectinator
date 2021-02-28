@@ -1,0 +1,5 @@
+Cassava Bacterial Blight (CBB)
+Cassava Brown Streak Disease (CBSD)
+Cassava Green Mottle (CGM)
+Cassava Mosaic Disease (CMD)
+Healthy

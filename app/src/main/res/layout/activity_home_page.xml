@@ -23,14 +23,14 @@ tools:context=".HomePage">
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <ImageView
-        android:id="@+id/selectedpic_imageview"
+        android:id="@+id/input_image"
         android:layout_width="243dp"
         android:layout_height="238dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="84dp"
         android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/nextTopage3_button"
+        app:layout_constraintBottom_toTopOf="@+id/submit_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,18 +49,20 @@ tools:context=".HomePage">
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Button
-        android:id="@+id/nextTopage3_button"
+        android:id="@+id/submit_img"
         android:layout_width="119dp"
         android:layout_height="53dp"
         android:layout_marginStart="149dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="144dp"
+        android:layout_marginBottom="17dp"
         android:text="Submit"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedpic_imageview" />
+        app:layout_constraintTop_toBottomOf="@+id/input_image" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView_profile"
@@ -113,7 +115,7 @@ tools:context=".HomePage">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nextTopage3_button"
+        app:layout_constraintTop_toBottomOf="@+id/submit_img"
         app:layout_constraintVertical_bias="0.894" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
