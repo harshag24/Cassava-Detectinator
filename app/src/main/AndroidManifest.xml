@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.SE_UI">
+        <activity android:name=".About_Cassava"></activity>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +27,11 @@
         <activity android:name=".Result" />
         <activity android:name=".Signup" />
         <activity android:name=".HomePage" />
-        <activity android:name=".Login"/>
+        <activity android:name=".Login" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

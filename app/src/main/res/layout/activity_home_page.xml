@@ -58,7 +58,7 @@ tools:context=".HomePage">
         android:layout_marginBottom="17dp"
         android:text="Submit"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/about_cassava"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +106,7 @@ tools:context=".HomePage">
         app:srcCompat="@drawable/ic_round_logout_24" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/about_cassava"
         android:layout_width="210dp"
         android:layout_height="48dp"
         android:layout_marginBottom="20dp"

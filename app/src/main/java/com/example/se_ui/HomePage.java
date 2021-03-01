@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -54,7 +55,7 @@ public class HomePage extends AppCompatActivity {
     float prediction_confidence;
     ImageButton logout;
     BottomNavigationView navigation;
-    Button choosepic  , submit_pic;
+    Button choosepic  , submit_pic, about;
     ImageView selectedpic;
     ProgressDialog progressDialog;
     StorageReference mStorageRef, Ref;
@@ -77,6 +78,7 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         logout = findViewById(R.id.logout_button);
+        about = findViewById(R.id.about_cassava);
         navigation = findViewById(R.id.bottomNavigationView_profile);
         navigation.getMenu().findItem(R.id.bottomnav_home).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -87,6 +89,12 @@ public class HomePage extends AppCompatActivity {
         submit_pic = findViewById(R.id.submit_img);
         user = FirebaseAuth.getInstance().getCurrentUser();
         mStorageRef=FirebaseStorage.getInstance().getReference();
+
+        //About Cassava Button
+        about.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, About_Cassava.class);
+            startActivity(intent);
+        });
 
         //Logout Button
         logout.setOnClickListener(v -> {
