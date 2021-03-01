@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Analytics extends AppCompatActivity {
     BottomNavigationView navigation;
     DatabaseReference  databaseReference;
-    int cbb,cbsd,cgm,cmd,healthy;
+    float cbb,cbsd,cgm,cmd,healthy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +40,7 @@ public class Analytics extends AppCompatActivity {
         BarChart barChart = (BarChart) findViewById(R.id.barchart);
 
         ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(cbb, 0));
+        entries.add(new BarEntry(cbb , 0));
         entries.add(new BarEntry(cbsd, 1));
         entries.add(new BarEntry(cgm, 2));
         entries.add(new BarEntry(cmd, 3));
@@ -62,18 +62,19 @@ public class Analytics extends AppCompatActivity {
         barChart.animateY(2000);
     }
 
-    private void getData() {
+    public void getData() {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Analytics");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                cbb = Integer.parseInt(snapshot.child("0").getValue().toString());
-                System.out.println(cbb);
-                Log.v("cbb", String.valueOf(cbb));
-                cbsd = Integer.parseInt(snapshot.child("0").getValue().toString());
-                cgm = Integer.parseInt(snapshot.child("0").getValue().toString());
-                cmd = Integer.parseInt(snapshot.child("0").getValue().toString());
-                healthy = Integer.parseInt(snapshot.child("0").getValue().toString());
+                cbb = Float.parseFloat(snapshot.child("0").getValue().toString());
+                cbsd = Float.parseFloat(snapshot.child("1").getValue().toString());
+                cgm = Float.parseFloat(snapshot.child("2").getValue().toString());
+                cmd = Float.parseFloat(snapshot.child("3").getValue().toString());
+                healthy = Float.parseFloat(snapshot.child("4").getValue().toString());
+
+                System.out.println(cbsd);
+                Log.v("cbb", String.valueOf(cbsd));
             }
 
             @Override
