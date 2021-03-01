@@ -67,11 +67,11 @@ public class Analytics extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                cbb = Float.parseFloat(snapshot.child("0").getValue().toString());
-                cbsd = Float.parseFloat(snapshot.child("1").getValue().toString());
-                cgm = Float.parseFloat(snapshot.child("2").getValue().toString());
-                cmd = Float.parseFloat(snapshot.child("3").getValue().toString());
-                healthy = Float.parseFloat(snapshot.child("4").getValue().toString());
+                cbb = Float.parseFloat(snapshot.child("Cassava Bacterial Blight (CBB)").getValue().toString());
+                cbsd = Float.parseFloat(snapshot.child("Cassava Brown Streak Disease (CBSD)").getValue().toString());
+                cgm = Float.parseFloat(snapshot.child("Cassava Green Mottle (CGM)").getValue().toString());
+                cmd = Float.parseFloat(snapshot.child("Cassava Mosaic Disease (CMD)").getValue().toString());
+                healthy = Float.parseFloat(snapshot.child("Healthy").getValue().toString());
 
                 System.out.println(cbsd);
                 Log.v("cbb", String.valueOf(cbsd));

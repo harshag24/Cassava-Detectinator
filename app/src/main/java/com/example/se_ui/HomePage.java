@@ -1,5 +1,6 @@
 package com.example.se_ui;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,8 +23,11 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -61,7 +65,7 @@ public class HomePage extends AppCompatActivity {
     StorageReference mStorageRef, Ref;
     Uri imageuri;
     FirebaseUser user;
-    DatabaseReference databaseReference ;
+    DatabaseReference databaseReference, dR_analytics ;
     protected Interpreter tflite;
     private TensorImage inputImageBuffer;
     private  int imageSizeX, imageSizeY;
@@ -71,7 +75,7 @@ public class HomePage extends AppCompatActivity {
     private Bitmap bitmap;
     private List<String> labels;
     String prediction = "";
-
+    int val;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +128,7 @@ public class HomePage extends AppCompatActivity {
             progressDialog.setMessage("Processing...");
             progressDialog.show();
             prediction();
+            updateAnalytics();
             Fileuploader();
 
         });
@@ -201,6 +206,26 @@ public class HomePage extends AppCompatActivity {
                 prediction_confidence = maxValueInMap;
             }
         }
+    }
+
+    public void updateAnalytics(){
+//        dR_analytics = (DatabaseReference) FirebaseDatabase.getInstance().getReference("Analytics").orderByChild(prediction);
+
+        dR_analytics =  FirebaseDatabase.getInstance().getReference("Analytics").child(prediction);
+
+        dR_analytics.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 val = Integer.parseInt(snapshot.getValue().toString());
+                 Log.v("Val", String.valueOf(snapshot.getValue()));
+                val++;
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        dR_analytics.setValue(val);
     }
 
     private String getExtension(Uri uri)
