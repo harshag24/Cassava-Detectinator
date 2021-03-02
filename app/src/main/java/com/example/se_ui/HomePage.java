@@ -75,7 +75,7 @@ public class HomePage extends AppCompatActivity {
     private Bitmap bitmap;
     private List<String> labels;
     String prediction = "";
-    int val;
+    int val=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,7 +128,7 @@ public class HomePage extends AppCompatActivity {
             progressDialog.setMessage("Processing...");
             progressDialog.show();
             prediction();
-            updateAnalytics();
+//            updateAnalytics();
             Fileuploader();
 
         });

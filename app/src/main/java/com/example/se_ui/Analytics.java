@@ -40,11 +40,11 @@ public class Analytics extends AppCompatActivity {
         BarChart barChart = (BarChart) findViewById(R.id.barchart);
 
         ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(cbb , 0));
-        entries.add(new BarEntry(cbsd, 1));
-        entries.add(new BarEntry(cgm, 2));
-        entries.add(new BarEntry(cmd, 3));
-        entries.add(new BarEntry(healthy, 4));
+        entries.add(new BarEntry(120f , 0));
+        entries.add(new BarEntry(130f, 1));
+        entries.add(new BarEntry(100f, 2));
+        entries.add(new BarEntry(250f, 3));
+        entries.add(new BarEntry(169f, 4));
 
         BarDataSet bardataset = new BarDataSet(entries, "Diseases");
 
@@ -59,7 +59,7 @@ public class Analytics extends AppCompatActivity {
         barChart.setData(data); // set the data and list of labels into chart
         barChart.setDescription("Set Bar Chart Description Here");  // set the description
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
-        barChart.animateY(2000);
+        barChart.animateY(1500);
     }
 
     public void getData() {
