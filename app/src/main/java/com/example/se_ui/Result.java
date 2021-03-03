@@ -2,8 +2,11 @@ package com.example.se_ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,9 +35,15 @@ public class Result extends AppCompatActivity {
         img_uri = Uri.parse(bundle.getString("ImageUri"));
 
         input.setImageURI(img_uri);
-        confi = confi*100;
+        confi = confi*10000;
         String str = "Prediction - "+pred_class+" ("+confi+")";
         pred.setText(str);
+
+        similar.setOnClickListener(v -> {
+            Intent intent = new Intent(Result.this , Similar_Predictions.class);
+            intent.putExtra("Prediction", pred_class);
+            startActivity(intent);
+        });
         //
     }
 }

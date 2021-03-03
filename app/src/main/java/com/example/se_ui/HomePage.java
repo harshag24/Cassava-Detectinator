@@ -106,6 +106,7 @@ public class HomePage extends AppCompatActivity {
             Intent intent = new Intent(HomePage.this , Login.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            Toast.makeText(HomePage.this, "Successfully Logged Out", Toast.LENGTH_LONG).show();
             finish();
             startActivity(intent);
         });
