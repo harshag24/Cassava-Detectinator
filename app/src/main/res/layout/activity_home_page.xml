@@ -24,19 +24,21 @@ tools:context=".HomePage">
 
     <ImageView
         android:id="@+id/input_image"
-        android:layout_width="243dp"
-        android:layout_height="238dp"
+        android:layout_width="226dp"
+        android:layout_height="158dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="84dp"
         android:layout_marginBottom="26dp"
+        android:background="#000000"
+        android:padding="1dp"
         app:layout_constraintBottom_toTopOf="@+id/submit_img"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectpic_button"
         app:layout_constraintVertical_bias="0.285"
-        app:srcCompat="@drawable/cassava" />
+        app:srcCompat="@drawable/cas" />
 
     <Button
         android:id="@+id/selectpic_button"
@@ -110,7 +112,7 @@ tools:context=".HomePage">
         android:text="About Cassava"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/submit_img"
         app:layout_constraintVertical_bias="0.894" />
