@@ -56,6 +56,8 @@ public class Analytics extends AppCompatActivity {
         labels.add("Healthy");
 
         BarData data = new BarData(labels, bardataset);
+        barChart.setDescription("Cassava Disease count");
+        barChart.setDescriptionColor(16777215);
         barChart.setData(data); // set the data and list of labels into chart
         barChart.setDescription("Set Bar Chart Description Here");  // set the description
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);

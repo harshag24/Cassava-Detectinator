@@ -11,38 +11,38 @@
     android:layout_height="match_parent"
     tools:context=".Result">
 
-    <TextView
-        android:id="@+id/prediction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="39dp"
-        android:text="Predicted Class- CBSD (90%)"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/sim_pred"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_image" />
+        <TextView
+            android:id="@+id/prediction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="39dp"
+            android:text="Predicted Class- CBSD (90%)"
+            android:textColor="?android:attr/textColor"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/sim_pred"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.592"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_image" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="155dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="66dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="22dp"
-        android:text="Result"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="155dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="66dp"
+            android:layout_marginEnd="128dp"
+            android:layout_marginBottom="22dp"
+            android:text="Result"
+            android:textAlignment="center"
+            android:textColor="?android:attr/textColor"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/input_image"
@@ -57,19 +57,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="15dp"
-        android:text="Input Image"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/input_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="15dp"
+            android:text="Input Image"
+            android:textColor="?android:attr/textColor"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/input_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <Button
             android:id="@+id/sim_pred"

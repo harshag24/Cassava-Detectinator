@@ -19,7 +19,7 @@ public class Similar_Predictions extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_similar__predictions);
+        setContentView(R.layout.activity_similar_predictions);
 
         recyclerView = findViewById(R.id.similar_recview);
 
