@@ -19,6 +19,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,6 +55,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class HomePage extends AppCompatActivity {
     float prediction_confidence;
@@ -65,7 +67,7 @@ public class HomePage extends AppCompatActivity {
     StorageReference mStorageRef, Ref;
     Uri imageuri;
     FirebaseUser user;
-    DatabaseReference databaseReference, dR_analytics ;
+    DatabaseReference databaseReference, dR_analytics, dR_Welcome;
     protected Interpreter tflite;
     private TensorImage inputImageBuffer;
     private  int imageSizeX, imageSizeY;
@@ -76,11 +78,13 @@ public class HomePage extends AppCompatActivity {
     private List<String> labels;
     String prediction = "";
     int val=0;
+    TextView welcome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+        welcome = findViewById(R.id.welcometext);
         logout = findViewById(R.id.logout_button);
         about = findViewById(R.id.about_cassava);
         navigation = findViewById(R.id.bottomNavigationView_profile);
@@ -93,6 +97,20 @@ public class HomePage extends AppCompatActivity {
         submit_pic = findViewById(R.id.submit_img);
         user = FirebaseAuth.getInstance().getCurrentUser();
         mStorageRef=FirebaseStorage.getInstance().getReference();
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        dR_Welcome = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid());
+        dR_Welcome.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String dispname = Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString().trim();
+                String[] first_name = dispname.split(" ");
+                welcome.setText(first_name[0]);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
         //About Cassava Button
         about.setOnClickListener(v -> {
