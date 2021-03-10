@@ -77,7 +77,7 @@ public class HomePage extends AppCompatActivity {
     private Bitmap bitmap;
     private List<String> labels;
     String prediction = "";
-    int val=0;
+    int val=0, imgcheck=0;
     TextView welcome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,12 +144,16 @@ public class HomePage extends AppCompatActivity {
 
         //Submit Button
         submit_pic.setOnClickListener(v -> {
-            progressDialog.setMessage("Processing...");
-            progressDialog.show();
-            prediction();
+            if(imgcheck==0){
+                Toast.makeText(HomePage.this,"Please Select a Image",Toast.LENGTH_LONG).show();
+            }
+            else {
+                progressDialog.setMessage("Processing...");
+                progressDialog.show();
+                prediction();
 //            updateAnalytics();
-            Fileuploader();
-
+                Fileuploader();
+            }
         });
     }
 
@@ -166,14 +170,13 @@ public class HomePage extends AppCompatActivity {
         DataType probabilityDataType = tflite.getOutputTensor(probabilityTensorIndex).dataType();
 
         inputImageBuffer = new TensorImage(imageDataType);
-        outputProbabilityBuffer = TensorBuffer.createFixedSize(new int[]{1, 5}, probabilityDataType);
-//        probabilityShape
+        outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
         probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
 
         inputImageBuffer = loadImage(bitmap);
 
         tflite.run(inputImageBuffer.getBuffer(),outputProbabilityBuffer.getBuffer().rewind());
-//
+
         showresult();
     }
 
@@ -266,6 +269,7 @@ public class HomePage extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
                 selectedpic.setImageBitmap(bitmap);
+                imgcheck=1;
             } catch (IOException e) {
                 e.printStackTrace();
             }

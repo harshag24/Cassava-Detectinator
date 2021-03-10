@@ -15,9 +15,12 @@
             android:id="@+id/prediction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="45dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="39dp"
             android:text="Predicted Class- CBSD (90%)"
+            android:textAlignment="center"
             android:textColor="?android:attr/textColor"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/sim_pred"
@@ -33,41 +36,37 @@
             android:layout_marginStart="128dp"
             android:layout_marginTop="66dp"
             android:layout_marginEnd="128dp"
-            android:layout_marginBottom="22dp"
             android:text="Result"
             android:textAlignment="center"
             android:textColor="?android:attr/textColor"
             android:textSize="50sp"
-            app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/input_image"
-        android:layout_width="272dp"
-        android:layout_height="221dp"
-        android:layout_marginTop="24dp"
+        <ImageView
+            android:id="@+id/input_image"
+            android:layout_width="272dp"
+            android:layout_height="221dp"
 
-        android:layout_marginBottom="27dp"
-        app:layout_constraintBottom_toTopOf="@+id/prediction"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="70dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="36dp"
             android:text="Input Image"
             android:textColor="?android:attr/textColor"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
