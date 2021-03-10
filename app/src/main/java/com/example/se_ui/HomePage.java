@@ -77,7 +77,7 @@ public class HomePage extends AppCompatActivity {
     private Bitmap bitmap;
     private List<String> labels;
     String prediction = "";
-    int val=0, imgcheck=0;
+    int imgcheck=0;
     TextView welcome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +151,7 @@ public class HomePage extends AppCompatActivity {
                 progressDialog.setMessage("Processing...");
                 progressDialog.show();
                 prediction();
-//            updateAnalytics();
+            updateAnalytics();
                 Fileuploader();
             }
         });
@@ -235,22 +235,45 @@ public class HomePage extends AppCompatActivity {
 
     public void updateAnalytics(){
 //        dR_analytics = (DatabaseReference) FirebaseDatabase.getInstance().getReference("Analytics").orderByChild(prediction);
+        dR_analytics =  FirebaseDatabase.getInstance().getReference("Analytics");
 
-        dR_analytics =  FirebaseDatabase.getInstance().getReference("Analytics").child(prediction);
-
-        dR_analytics.addValueEventListener(new ValueEventListener() {
+//        dR_analytics.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                 val = Integer.parseInt(Objects.requireNonNull(snapshot.getValue()).toString());
+//                 Log.v("Val", String.valueOf(snapshot.getValue()));
+//                val++;
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+        dR_analytics.addListenerForSingleValueEvent(new ValueEventListener() {
+            int val;
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 val = Integer.parseInt(snapshot.getValue().toString());
-                 Log.v("Val", String.valueOf(snapshot.getValue()));
-                val++;
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    if(prediction.equals(snapshot.getKey())){
+                        Log.v("Val", String.valueOf(snapshot.getKey()));
+                        val = Integer.parseInt(snapshot.getValue().toString());
+                        val += 1 ;
+                        dR_analytics.child(prediction).setValue(val);
+                        Log.v("Val", String.valueOf(val));
+                        break;
+                    }
+                }
+
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
-        dR_analytics.setValue(val);
+
     }
 
     private String getExtension(Uri uri)
