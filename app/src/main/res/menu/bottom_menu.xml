@@ -12,12 +12,12 @@
         android:icon="@drawable/ic_profile" />
     <item
         android:id="@+id/bottomnav_prevpred"
-        android:title="Prev Pred"
+        android:title="Predictions"
         android:icon="@drawable/files"
         />
     <item
         android:id="@+id/bottomnav_analytics"
-        android:title="About"
+        android:title="Analytics"
         android:icon="@drawable/ic_outline_analytics_24"
         />
 </menu>
