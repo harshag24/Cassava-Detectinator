@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.SE_UI">
-        <activity android:name=".Similar_Predictions"></activity>
+        <activity android:name=".Similar_Predictions"/>
         <activity android:name=".About_Cassava" />
         <activity android:name=".SplashScreen">
             <intent-filter>

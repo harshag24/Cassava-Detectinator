@@ -166,12 +166,14 @@ public class HomePage extends AppCompatActivity {
         DataType probabilityDataType = tflite.getOutputTensor(probabilityTensorIndex).dataType();
 
         inputImageBuffer = new TensorImage(imageDataType);
-        outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
+        outputProbabilityBuffer = TensorBuffer.createFixedSize(new int[]{1, 5}, probabilityDataType);
+//        probabilityShape
         probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
 
         inputImageBuffer = loadImage(bitmap);
 
         tflite.run(inputImageBuffer.getBuffer(),outputProbabilityBuffer.getBuffer().rewind());
+//
         showresult();
     }
 
@@ -183,11 +185,12 @@ public class HomePage extends AppCompatActivity {
         // TODO(b/143564309): Fuse ops inside ImageProcessor.
         ImageProcessor imageProcessor =
                 new ImageProcessor.Builder()
-                        .add(new ResizeWithCropOrPadOp(cropSize, cropSize))
-                        .add(new ResizeOp(imageSizeX, imageSizeY, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
-                        .add(getPreprocessNormalizeOp())
+                        .add(new ResizeOp(380, 380, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
                         .build();
         return imageProcessor.process(inputImageBuffer);
+//                           .add(new ResizeWithCropOrPadOp(cropSize, cropSize))
+//                                .add(getPreprocessNormalizeOp())
+
     }
 
     private MappedByteBuffer loadmodelfile(Activity activity) throws IOException {
