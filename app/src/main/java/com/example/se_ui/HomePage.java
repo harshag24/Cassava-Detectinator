@@ -234,21 +234,8 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void updateAnalytics(){
-//        dR_analytics = (DatabaseReference) FirebaseDatabase.getInstance().getReference("Analytics").orderByChild(prediction);
         dR_analytics =  FirebaseDatabase.getInstance().getReference("Analytics");
 
-//        dR_analytics.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                 val = Integer.parseInt(Objects.requireNonNull(snapshot.getValue()).toString());
-//                 Log.v("Val", String.valueOf(snapshot.getValue()));
-//                val++;
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
         dR_analytics.addListenerForSingleValueEvent(new ValueEventListener() {
             int val;
             @Override
@@ -264,16 +251,12 @@ public class HomePage extends AppCompatActivity {
                         break;
                     }
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-
         });
-
     }
 
     private String getExtension(Uri uri)

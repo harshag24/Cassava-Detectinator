@@ -97,14 +97,14 @@ tools:context=".Signup"
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="166dp"
+        android:layout_width="wrap_content"
         android:layout_height="69dp"
-        android:layout_marginTop="40dp"
-        android:text="SignUp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="128dp"
+        android:text="Signup"
         android:textColor="?android:attr/textColor"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
