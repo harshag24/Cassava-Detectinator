@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -39,8 +40,10 @@ import static java.util.concurrent.CompletableFuture.completedFuture;
 public class Analytics extends AppCompatActivity {
     BottomNavigationView navigation;
     DatabaseReference  databaseReference;
-    float cbb=100.0f,cbsd,cgm,cmd,healthy;
-
+    float cbb,cbsd,cgm,cmd,healthy;
+    ArrayList<BarEntry> entries;
+    BarChart barChart;
+    BarData data;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +53,55 @@ public class Analytics extends AppCompatActivity {
         navigation = findViewById(R.id.bottomNavigationView_analytics);
         navigation.getMenu().findItem(R.id.bottomnav_analytics).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        BarChart barChart = findViewById(R.id.barchart);
 
-        Log.v("Val", "Hello World");
+        barChart = findViewById(R.id.barchart);
+        entries = new ArrayList<>();
+        BarDataSet bardataset = new BarDataSet(entries, "Diseases");
+        ArrayList<String> labels = new ArrayList<String>();
+        labels.add("CBB");
+        labels.add("CBSD");
+        labels.add("CGM");
+        labels.add("CMD");
+        labels.add("Healthy");
+        data = new BarData(labels, bardataset);
+        barChart.setDescription("Cassava Disease count");
+        barChart.setDescriptionColor(16777215);
+        barChart.setData(data);
+        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        barChart.getAxisLeft().setAxisMinValue(0);
+        barChart.getAxisLeft().setAxisMaxValue(200);
+        barChart.animateY(1500);
+        barChart.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Analytics");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                entries.clear();
+
                 cbb = Float.parseFloat(snapshot.child("Cassava Bacterial Blight (CBB)").getValue().toString());
                 cbsd = Float.parseFloat(snapshot.child("Cassava Brown Streak Disease (CBSD)").getValue().toString());
                 cgm = Float.parseFloat(snapshot.child("Cassava Green Mottle (CGM)").getValue().toString());
                 cmd = Float.parseFloat(snapshot.child("Cassava Mosaic Disease (CMD)").getValue().toString());
                 healthy = Float.parseFloat(snapshot.child("Healthy").getValue().toString());
 
-                System.out.println(cbsd);
+                entries.add(new BarEntry(cbb , 0));
+                entries.add(new BarEntry(cbsd, 1));
+                entries.add(new BarEntry(cgm, 2));
+                entries.add(new BarEntry(cmd, 3));
+                entries.add(new BarEntry(healthy, 4));
+
+                barChart.notifyDataSetChanged();
+                barChart.invalidate();
+
+                System.out.println(entries.get(0));
                 Log.v("Val", String.valueOf(cbb));
                 Log.v("Val", String.valueOf(cgm));
                 Log.v("Val", String.valueOf(cbsd));
@@ -72,33 +110,7 @@ public class Analytics extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
-        ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(cbb , 0));
-        entries.add(new BarEntry(cbsd, 1));
-        entries.add(new BarEntry(cgm, 2));
-        entries.add(new BarEntry(cmd, 3));
-        entries.add(new BarEntry(healthy, 4));
-        Log.v("Val1", String.valueOf(entries.get(0)));
-
-        BarDataSet bardataset = new BarDataSet(entries, "Diseases");
-
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("CBB");
-        labels.add("CBSD");
-        labels.add("CGM");
-        labels.add("CMD");
-        labels.add("Healthy");
-
-        BarData data = new BarData(labels, bardataset);
-        barChart.setDescription("Cassava Disease count");
-        barChart.setDescriptionColor(16777215);
-        barChart.setData(data); // set the data and list of labels into chart
-        barChart.setDescription("Set Bar Chart Description Here");  // set the description
-        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
-        barChart.animateY(1500);
     }
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {

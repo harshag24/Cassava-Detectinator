@@ -10,7 +10,6 @@
         android:id="@+id/barchart"
         android:layout_width="match_parent"
         android:layout_height="671dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView_analytics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="4dp"
         android:background="#4747d1"
         app:itemBackground="?selectableItemBackgroundBorderless"
         app:itemHorizontalTranslationEnabled="true"
@@ -31,5 +29,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barchart"
+        app:layout_constraintVertical_bias="0.989"
         app:menu="@menu/bottom_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
