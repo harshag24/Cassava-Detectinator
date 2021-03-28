@@ -35,8 +35,8 @@ public class Result extends AppCompatActivity {
         img_uri = Uri.parse(bundle.getString("ImageUri"));
 
         input.setImageURI(img_uri);
-        confi = confi*10000;
-        String str = "Prediction - "+pred_class+" ("+confi+")";
+        confi = confi*100;
+        String str = "Prediction - "+pred_class+" ("+confi+"%)";
         pred.setText(str);
 
         similar.setOnClickListener(v -> {

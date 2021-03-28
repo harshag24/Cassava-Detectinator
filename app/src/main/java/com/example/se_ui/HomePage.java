@@ -171,7 +171,8 @@ public class HomePage extends AppCompatActivity {
 
         inputImageBuffer = new TensorImage(imageDataType);
         outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
-        probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
+        probabilityProcessor = new TensorProcessor.Builder().build();
+//        getPostprocessNormalizeOp()
 
         inputImageBuffer = loadImage(bitmap);
 
