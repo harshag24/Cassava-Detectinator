@@ -210,10 +210,6 @@ public class HomePage extends AppCompatActivity {
         return new NormalizeOp(IMAGE_MEAN, IMAGE_STD);
     }
 
-    private TensorOperator getPostprocessNormalizeOp(){
-        return new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD);
-    }
-
     private void showresult(){
         try{
             labels = FileUtil.loadLabels(this,"labels.txt");
