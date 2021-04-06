@@ -107,7 +107,6 @@ public class UserProfile extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if(task.isSuccessful())
                         { Toast.makeText(UserProfile.this , "Reset link sent to "+user.getEmail() , Toast.LENGTH_SHORT).show();
-                            finish();
                         }
                         else
                             Toast.makeText(UserProfile.this , "Unable to send reset link" , Toast.LENGTH_SHORT).show();
