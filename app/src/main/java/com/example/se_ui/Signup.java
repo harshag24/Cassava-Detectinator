@@ -68,7 +68,7 @@ public class Signup extends AppCompatActivity {
                     else {
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                         progressDialog.dismiss();
-                        Toast.makeText(Signup.this, "Registration failed.",
+                        Toast.makeText(Signup.this, "Registration failed!! User Already Exists!",
                                 Toast.LENGTH_LONG).show();
                     }
                 });
@@ -136,7 +136,7 @@ public class Signup extends AppCompatActivity {
             phone.setError("Field can't be empty");
             return false;
         }
-        else if(phoneInput.length()<10)
+        else if(phoneInput.length()!=10)
         {
             phone.setError("Enter 10 digits");
             return false;

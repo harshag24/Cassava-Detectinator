@@ -51,17 +51,14 @@ public class SplashScreen extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String name = Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
                 Intent intent = new Intent(SplashScreen.this, HomePage.class);
-//                intent.putExtra("Name", name);
-//                music.release();
                 finish();
                 startActivity(intent);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(SplashScreen.this, "Client doesn't have permission to read from that database reference.", Toast.LENGTH_LONG).show();
+//                Toast.makeText(SplashScreen.this, "Client doesn't have permission to read from that database reference.", Toast.LENGTH_LONG).show();
             }
         });
 
