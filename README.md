@@ -1,4 +1,8 @@
 # Cassava Detectinator
  Detectinator for Cassava Plant Diseases.
 
-This is an app that will take image input from a phones camera or gallery and use it to get a prediction of the detection and classification of the Cassava leaf disease.
+This is app is the implementation of our novel "One-vs-All" methodology based Cassava Leaves Diseases Detection. 
+</br>
+This app will take image input from a phone's gallery and use it to make a prediction of the disease present with confidence percentage.
+</br>
+In addition to this, It also shows your previous predictions as well shows count plot of all the detections made on the app till date.
