@@ -1,7 +1,6 @@
 # Cassava Detectinator
- Detectinator for Cassava Plant Diseases.
 
-This is app is the implementation of our novel "One-vs-All" methodology based Cassava Leaves Diseases Detection. 
+This is app is the implementation of our novel "One-vs-All" methodology based Cassava Leaves Diseases Detection. The research paper on this is under review! 
 </br>
 This app will take image input from a phone's gallery and use it to make a prediction of the disease present with confidence percentage.
 </br>
